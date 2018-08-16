@@ -1,0 +1,5 @@
+bibtex.dir <- "C:/Users/Katherine Holsteen/Documents/My Documents/Research/Migraine_App/DissertationProposal/"
+bibtex.file <- "Migraine App.bib"
+csl.file <-"american-medical-association-no-url.csl"
+code.dir <- "C:/Users/Katherine Holsteen/Documents/My Documents/Research/Migraine_App/Code/geneRal/"
+header.file <- "header.tex"
