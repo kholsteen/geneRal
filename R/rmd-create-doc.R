@@ -1,6 +1,7 @@
 #'Render the Rmarkdown file and move the output
 #' @export
-rmd_create_doc <- function(run.dir, rmd.file, final.dir = NA, final.title = NA,
+rmd_create_doc <- function(run.dir, rmd.file, params, 
+                           final.dir = NA, final.title = NA,
                            nocopy = TRUE, nobib = TRUE, doctype= "html",
                            bibtex.dir, bibtex.file, csl.file, code.dir, header.file
                            ) {
@@ -20,7 +21,8 @@ rmd_create_doc <- function(run.dir, rmd.file, final.dir = NA, final.title = NA,
   }
 
   # Render doc and move to destination dir
-  rmarkdown::render(paste0(run.dir, rmd.file, ".Rmd"))
+  rmarkdown::render(file.path(run.dir, paste0(rmd.file, ".Rmd")), 
+                    params = params, output_format = paste0(doctype, "_document"))
   if (!nocopy) {
     file.copy(from = file.path(run.dir, paste0(rmd.file, ".", doctype)),
             to = file.path(final.dir, paste0(final.title, ".", doctype)),

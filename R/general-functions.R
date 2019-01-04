@@ -28,3 +28,42 @@ pathPrep <- function(path = "clipboard") {
   writeClipboard(x)
   return(x)
 }
+
+#' Write lines to a file if the connection is not null
+#' Else just cat the lines
+#' @export
+appendIfFile <- function(lines, file) {
+
+  if (!is.null(file)) {
+    if ("data.frame" %in% class(lines)) {
+      write.table(lines, file, append = TRUE ,sep="\t",
+                  row.names = FALSE, col.names = TRUE)
+    } else {
+      write(lines, file, append = TRUE)
+    }
+  } else {
+    cat(file)
+  }
+}
+
+
+#' Round to the nearest anything.
+#' http://r.789695.n4.nabble.com/Is-there-in-R-a-function-equivalent-to-the-mround-as-found-in-most-spreadsheets-td855895.html
+#' @example plot(c(1:10), col = gg_color_hue(10), pch = 16, cex = 10)
+#' @export
+mround <- function(x,base){
+  base*round(x/base)
+}
+
+#' Emulate ggplot colors
+#' @export
+#' from https://stackoverflow.com/questions/8197559/emulate-ggplot2-default-color-palette
+gg_color_hue <- function(n) {
+  hues = seq(15, 375, length = n + 1)
+  hcl(h = hues, l = 65, c = 100)[1:n]
+}
+
+
+
+
+

@@ -4,7 +4,7 @@
 \alias{rmd_create_doc}
 \title{Render the Rmarkdown file and move the output}
 \usage{
-rmd_create_doc(run.dir, rmd.file, final.dir = NA, final.title = NA,
+rmd_create_doc(run.dir, rmd.file, params, final.dir = NA, final.title = NA,
   nocopy = TRUE, nobib = TRUE, doctype = "html", bibtex.dir, bibtex.file,
   csl.file, code.dir, header.file)
 }
