@@ -13,6 +13,8 @@
 
 
 #' Convert a Windows path on the clipboard to a path accepted by R
+#' @description Specifically, it converts the forward slashes to backslashes
+#' @param path file path to convert; defaults to the path on the clipboard
 #' @export
 pathPrep <- function(path = "clipboard") {
 
@@ -29,10 +31,13 @@ pathPrep <- function(path = "clipboard") {
   return(x)
 }
 
-#' Write lines to a file if the connection is not null
-#' Else just cat the lines
+#' Write lines to a file if the path is given
+#' @description Write lines to a file if the connection is not null; else just cat the lines.
+#' This is useful for logging progress of a running script.
+#' @param lines the lines to write
+#' @param file the file destination; default NULL 
 #' @export
-appendIfFile <- function(lines, file) {
+appendIfFile <- function(lines, file = NULL) {
 
   if (!is.null(file)) {
     if ("data.frame" %in% class(lines)) {
@@ -48,16 +53,18 @@ appendIfFile <- function(lines, file) {
 
 
 #' Round to the nearest anything.
-#' http://r.789695.n4.nabble.com/Is-there-in-R-a-function-equivalent-to-the-mround-as-found-in-most-spreadsheets-td855895.html
-#' @example plot(c(1:10), col = gg_color_hue(10), pch = 16, cex = 10)
+#' @description From http://r.789695.n4.nabble.com/Is-there-in-R-a-function-equivalent-to-the-mround-as-found-in-most-spreadsheets-td855895.html
+
 #' @export
 mround <- function(x,base){
   base*round(x/base)
 }
 
 #' Emulate ggplot colors
+#' @param n the number of colors needed
 #' @export
-#' from https://stackoverflow.com/questions/8197559/emulate-ggplot2-default-color-palette
+#' @description from https://stackoverflow.com/questions/8197559/emulate-ggplot2-default-color-palette
+#' @example plot(c(1:10), col = gg_color_hue(10), pch = 16, cex = 10)
 gg_color_hue <- function(n) {
   hues = seq(15, 375, length = n + 1)
   hcl(h = hues, l = 65, c = 100)[1:n]

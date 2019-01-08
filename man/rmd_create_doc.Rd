@@ -2,12 +2,33 @@
 % Please edit documentation in R/rmd-create-doc.R
 \name{rmd_create_doc}
 \alias{rmd_create_doc}
-\title{Render the Rmarkdown file and move the output}
+\title{Render Rmarkdown file and potentially copy the output to a new location}
 \usage{
-rmd_create_doc(run.dir, rmd.file, params, final.dir = NA, final.title = NA,
-  nocopy = TRUE, nobib = TRUE, doctype = "html", bibtex.dir, bibtex.file,
-  csl.file, code.dir, header.file)
+rmd_create_doc(run.dir, rmd.file, params, final.dir = NA,
+  final.title = NA, nocopy = TRUE, nobib = TRUE, doctype = "html",
+  bibtex.dir, bibtex.file, csl.file, code.dir, header.file)
+}
+\arguments{
+\item{run.dir}{the location of the rmd file to render}
+
+\item{rmd.file}{the name of the rmd file to render}
+
+\item{params}{the list of parameters to pass into the rmd file}
+
+\item{final.dir}{the destination location for the rendered file}
+
+\item{final.title}{the destination title for the rendered file}
+
+\item{nocopy}{boolean: TRUE if you do NOT want to copy the rendered file to a new location}
+
+\item{nobib}{boolean: TRUE if you do NOT want to copy the bibtext bibliography into the run.dir (i.e. if you don't have citations in this document)}
+
+\item{bibtex.dir}{the location of the bibtex file for the citations}
+
+\item{bibtex.file}{the name of the bibtext file}
+
+\item{csl.file}{the name of the csl file giving the citation formal}
 }
 \description{
-Render the Rmarkdown file and move the output
+Render Rmarkdown file and potentially copy the output to a new location
 }

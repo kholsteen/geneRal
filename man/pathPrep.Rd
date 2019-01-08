@@ -6,6 +6,9 @@
 \usage{
 pathPrep(path = "clipboard")
 }
+\arguments{
+\item{path}{file path to convert; defaults to the path on the clipboard}
+}
 \description{
-Convert a Windows path on the clipboard to a path accepted by R
+Specifically, it converts the forward slashes to backslashes
 }

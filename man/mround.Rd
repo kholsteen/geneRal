@@ -2,12 +2,10 @@
 % Please edit documentation in R/general-functions.R
 \name{mround}
 \alias{mround}
-\title{Round to the nearest anything.
-http://r.789695.n4.nabble.com/Is-there-in-R-a-function-equivalent-to-the-mround-as-found-in-most-spreadsheets-td855895.html}
+\title{Round to the nearest anything.}
 \usage{
 mround(x, base)
 }
 \description{
-Round to the nearest anything.
-http://r.789695.n4.nabble.com/Is-there-in-R-a-function-equivalent-to-the-mround-as-found-in-most-spreadsheets-td855895.html
+From http://r.789695.n4.nabble.com/Is-there-in-R-a-function-equivalent-to-the-mround-as-found-in-most-spreadsheets-td855895.html
 }
