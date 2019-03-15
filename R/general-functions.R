@@ -21,13 +21,13 @@ pathPrep <- function(path = "clipboard") {
   # from https://stackoverflow.com/questions/8425409/file-path-issues-in-r-using-windows-hex-digits-in-character-string-error/47251807
 
   y <- if (path == "clipboard") {
-    readClipboard()
+    utils::readClipboard()
   } else {
     cat("Please enter the path:\n\n")
     readline()
   }
   x <- chartr("\\", "/", y)
-  writeClipboard(x)
+  utils::writeClipboard(x)
   return(x)
 }
 
@@ -35,19 +35,19 @@ pathPrep <- function(path = "clipboard") {
 #' @description Write lines to a file if the connection is not null; else just cat the lines.
 #' This is useful for logging progress of a running script.
 #' @param lines the lines to write
-#' @param file the file destination; default NULL 
+#' @param file the file destination; default NULL
 #' @export
 appendIfFile <- function(lines, file = NULL) {
 
   if (!is.null(file)) {
     if ("data.frame" %in% class(lines)) {
-      write.table(lines, file, append = TRUE ,sep="\t",
+      utils::write.table(lines, file, append = TRUE ,sep="\t",
                   row.names = FALSE, col.names = TRUE)
     } else {
       write(lines, file, append = TRUE)
     }
   } else {
-    cat(file)
+    cat(lines)
   }
 }
 
@@ -67,7 +67,7 @@ mround <- function(x,base){
 #' @example plot(c(1:10), col = gg_color_hue(10), pch = 16, cex = 10)
 gg_color_hue <- function(n) {
   hues = seq(15, 375, length = n + 1)
-  hcl(h = hues, l = 65, c = 100)[1:n]
+  grDevices::hcl(h = hues, l = 65, c = 100)[1:n]
 }
 
 

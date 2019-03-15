@@ -23,6 +23,8 @@ rmd_create_doc(run.dir, rmd.file, params, final.dir = NA,
 
 \item{nobib}{boolean: TRUE if you do NOT want to copy the bibtext bibliography into the run.dir (i.e. if you don't have citations in this document)}
 
+\item{doctype}{the output file format (string): pdf, html, or docx}
+
 \item{bibtex.dir}{the location of the bibtex file for the citations}
 
 \item{bibtex.file}{the name of the bibtext file}
