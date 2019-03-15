@@ -2,9 +2,7 @@
 #' @export
 #' @importFrom dplyr %>%
 
-find_packages <- function(pkg_path, output_path) {
-
-  input_dir <- file.path(pkg_path, "R")
+find_packages <- function(input_dir, output_dir) {
 
   files <- list.files(path = input_dir)
   packages <- purrr::map(files, function(f) {
@@ -22,6 +20,6 @@ find_packages <- function(pkg_path, output_path) {
 
   ## Next step would be to grep through the description and just output the ones not already there.
 
-  readr::write_csv(tibble::tibble(packages = packages), file.path(output_path, "packages.csv"))
+  readr::write_csv(tibble::tibble(packages = packages), file.path(output_dir, "packages.csv"))
 
 }
