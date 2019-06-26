@@ -19,4 +19,5 @@ Imports:
   tidyr, 
   magrittr, 
   dplyr, 
-  knitr
+  knitr,
+  ggplot2
