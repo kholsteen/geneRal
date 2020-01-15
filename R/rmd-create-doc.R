@@ -5,6 +5,7 @@
 #' @param doctype the output file format (string): pdf, html, or docx
 #' @param final.dir the destination location for the rendered file
 #' @param final.title the destination title for the rendered file
+#' @param copy_rmd boolean: TRUE if you want to copy the rmd code file to the output location
 #' @param nocopy boolean: TRUE if you do NOT want to copy the rendered file to a new location
 #' @param nobib boolean: TRUE if you do NOT want to copy the bibtext bibliography into the run.dir (i.e. if you don't have citations in this document)
 #' @param bibtex.dir the location of the bibtex file for the citations
@@ -13,8 +14,10 @@
 #' @export
 rmd_create_doc <- function(run.dir, rmd.file, params,
                            final.dir = NA, final.title = NA,
+                           copy_rmd = FALSE,
                            nocopy = TRUE, nobib = TRUE, doctype= "html",
-                           bibtex.dir, bibtex.file, csl.file, code.dir, header.file
+                           bibtex.dir, bibtex.file, csl.file,
+                           code.dir, header.file
                            ) {
 
   #setwd(run.dir)
@@ -33,7 +36,10 @@ rmd_create_doc <- function(run.dir, rmd.file, params,
 
   # Render doc
   rmarkdown::render(file.path(run.dir, paste0(rmd.file, ".Rmd")),
-                    params = params, output_format = paste0(doctype, "_document"))
+                    params = params,
+                    clean = TRUE,
+                    quiet = TRUE,
+                    output_format = paste0(doctype, "_document"))
 
   ## Move to destination directory
   if (!nocopy) {
@@ -41,5 +47,12 @@ rmd_create_doc <- function(run.dir, rmd.file, params,
             to = file.path(final.dir, paste0(final.title, ".", doctype)),
             overwrite=TRUE)
   }
+
+  if (copy_rmd) {
+    file.copy(from = file.path(run.dir, paste0(rmd.file, ".rmd")),
+              to = file.path(final.dir, paste0(final.title, ".rmd")),
+              overwrite=TRUE)
+  }
+
 }
 

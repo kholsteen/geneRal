@@ -5,8 +5,9 @@
 \title{Render Rmarkdown file and potentially copy the output to a new location}
 \usage{
 rmd_create_doc(run.dir, rmd.file, params, final.dir = NA,
-  final.title = NA, nocopy = TRUE, nobib = TRUE, doctype = "html",
-  bibtex.dir, bibtex.file, csl.file, code.dir, header.file)
+  final.title = NA, copy_rmd = FALSE, nocopy = TRUE, nobib = TRUE,
+  doctype = "html", bibtex.dir, bibtex.file, csl.file, code.dir,
+  header.file)
 }
 \arguments{
 \item{run.dir}{the location of the rmd file to render}
@@ -18,6 +19,8 @@ rmd_create_doc(run.dir, rmd.file, params, final.dir = NA,
 \item{final.dir}{the destination location for the rendered file}
 
 \item{final.title}{the destination title for the rendered file}
+
+\item{copy_rmd}{boolean: TRUE if you want to copy the rmd code file to the output location}
 
 \item{nocopy}{boolean: TRUE if you do NOT want to copy the rendered file to a new location}
 
